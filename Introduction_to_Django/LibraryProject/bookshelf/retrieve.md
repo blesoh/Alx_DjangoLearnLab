@@ -1,20 +1,13 @@
-```python
+Code used to retrieve objects in Django Shell: from bookshelf.models import Book
 
-from bookshelf.models import Book
+book = Book.objects.get(title="1984") book.title
 
+Output: '1984'
 
+book.author
 
-\# Retrieve all Book instances
+Output: 'George Orwell'
 
-books = Book.objects.all()
+book.publication_year
 
-for b in books:
-
-&nbsp;   print(b.title, b.author, b.publication\_year)
-
-
-
-\# Output:
-
-\# 1984 George Orwell 1949
-
+Output: 1949
