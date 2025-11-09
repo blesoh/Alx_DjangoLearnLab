@@ -1,7 +1,7 @@
 # LibraryProject/relationship_app/views.py
 
 from django.shortcuts import render
-from django.views import View
+from django.views.generic.detail import DetailView
 from .models import Book
 from .models import Library
 
@@ -14,7 +14,7 @@ def list_books(request):
     return render(request, 'relationship_app/list_books.html', {'books': books})
 
 # Class-based view to show details of a specific library
-class LibraryDetailView(View):
-    def get(self, request, pk):
-        library = Library.objects.get(pk=pk)
-        return render(request, 'relationship_app/library_detail.html', {'library': library})
+class LibraryDetailView(DetailView):
+    model = Library
+    template_name = 'relationship_app/library_detail.html'
+    context_object_name = 'library'
