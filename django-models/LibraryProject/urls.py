@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView  # import redirect view
+from LibraryProject.relationship_app import views  # Import your views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('relationship/', include('LibraryProject.relationship_app.urls')),  # include app URLs
-    path('', RedirectView.as_view(url='/relationship/')),  # redirect root / to /relationship/
+    path('', views.list_books, name='home'),  # Root URL
+    path('admin/', admin.site.urls),           # Admin URL
+    path('relationship/', include('LibraryProject.relationship_app.urls')),  # Optional extra path
 ]
